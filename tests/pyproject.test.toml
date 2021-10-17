@@ -1,0 +1,5 @@
+[tool.autohooks]
+pre-commit = ['foo', 'autohooks.plugins.mypy']
+
+[tool.autohooks.plugins.mypy]
+foo = 'bar'
