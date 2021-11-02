@@ -18,9 +18,9 @@
 import subprocess
 import sys
 
-from autohooks.api import ok, error, out
-from autohooks.api.path import match
+from autohooks.api import error, ok, out
 from autohooks.api.git import get_staged_status, stash_unstaged_changes
+from autohooks.api.path import match
 
 DEFAULT_INCLUDE = ("*.py",)
 DEFAULT_ARGUMENTS = []
@@ -81,22 +81,24 @@ def precommit(config=None, **kwargs):  # pylint: disable=unused-argument
 
     with stash_unstaged_changes(files):
         ret = 0
-        for f in files:
-            cmd = ["mypy"]
-            cmd.extend(arguments)
-            cmd.append(str(f.absolute_path()))
-            try:
-                subprocess.run(cmd, check=True, capture_output=True)
-            except subprocess.CalledProcessError as e:
-                ret = e.returncode
-                error(f"Static typing error(s) found in {str(f.path)}:")
-                lint_errors = e.stdout.decode(
-                    encoding=sys.getdefaultencoding(), errors="replace"
-                ).split("\n")
-                # Skip the first line that only shows ******** Module blah
-                for line in lint_errors[1:]:
-                    out(line)
-                continue
-            ok(f"Mypy check {str(f.path)} was successful.")
 
+        absolute_path_files = list(map(lambda p: str(p.absolute_path()), files))
+
+        cmd = ["mypy"]
+        cmd.extend(arguments)
+        cmd.extend(absolute_path_files)
+        try:
+            subprocess.run(cmd, check=True, capture_output=True)
+        except subprocess.CalledProcessError as e:
+            ret = e.returncode
+            error("Static typing error(s) found:")
+            lint_errors = e.stdout.decode(
+                encoding=sys.getdefaultencoding(), errors="replace"
+            ).split("\n")
+            # Skip the first line that only shows ******** Module blah
+            for line in lint_errors[1:]:
+                out(line)
+            return ret
+
+        ok("Mypy check was successful.")
         return ret
