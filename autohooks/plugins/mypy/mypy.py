@@ -68,6 +68,7 @@ def get_mypy_arguments(config):
 
 def precommit(config=None, **kwargs):  # pylint: disable=unused-argument
     check_mypy_installed()
+    bad: str = 1  # pylint: disable=unused-variable
 
     include = get_include_from_config(config)
 
@@ -96,7 +97,7 @@ def precommit(config=None, **kwargs):  # pylint: disable=unused-argument
                 encoding=sys.getdefaultencoding(), errors="replace"
             ).split("\n")
             # Skip the first line that only shows ******** Module blah
-            for line in lint_errors[1:]:
+            for line in lint_errors:
                 out(line)
             return ret
 
