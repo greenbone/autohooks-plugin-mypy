@@ -30,6 +30,7 @@ homepage = "https://github.com/greenbone/autohooks-plugin-mypy"
 repository = "https://github.com/greenbone/autohooks-plugin-mypy"
 packages = [
   { include = "autohooks" },
+  { include = "tests", format = "sdist"},
 ]
 
 [tool.poetry.dependencies]
