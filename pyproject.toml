@@ -2,17 +2,34 @@
 name = "autohooks-plugin-mypy"
 version = "0.1.4"
 description = "An autohooks plugin for python code static typing check with mypy"
-authors = ["Vincent Texier <vit@free.fr>"]
+authors = ["Vincent Texier <vit@free.fr>", "Greenbone Networks GmbH <info@greenbone.net>"]
 license = "GPL-3.0-or-later"
-packages = [
-  { include = "autohooks" },
-]
 keywords = [
   "git",
   "static",
   "typing",
   "hooks",
   "mypy",
+]
+classifiers = [
+  # Full list: https://pypi.org/pypi?%3Aaction=list_classifiers
+  "Development Status :: 4 - Beta",
+  "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "Programming Language :: Python :: 3.7",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Operating System :: OS Independent",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+]
+readme = "README.md"
+homepage = "https://github.com/greenbone/autohooks-plugin-mypy"
+repository = "https://github.com/greenbone/autohooks-plugin-mypy"
+packages = [
+  { include = "autohooks" },
 ]
 
 [tool.poetry.dependencies]
