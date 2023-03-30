@@ -36,7 +36,7 @@ packages = [
 [tool.poetry.dependencies]
 python = "^3.7.0"
 autohooks = ">=21.7.0"
-mypy = ">=0.910,<1.0"
+mypy = ">=0.910"
 
 [tool.poetry.dev-dependencies]
 pontos = ">=23.1.3"
