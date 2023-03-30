@@ -10,10 +10,7 @@ static typing check via [mypy](https://github.com/python/mypy).
 You can install the latest stable release of autohooks-plugin-mypy from the
 Python Package Index using [pip](https://pip.pypa.io/):
 
-    pip install autohooks-plugin-mypy
-
-Note the `pip` refers to the Python 3 package manager. In an environment where
-Python 2 is also available the correct command may be `pip3`.
+    python3 -m pip install autohooks-plugin-mypy
 
 ### Install using poetry
 
@@ -58,18 +55,19 @@ arguments = ["--ignore-missing-imports", "--config-file=/path/to/.mypy.ini"]
 
 ## Maintainer
 
-This project is maintained by [Vincent Texier](https://gitlab.com/VictorIndiaTango).
+This project is maintained by [Greenbone AG](https://www.greenbone.net/).
 
 ## Contributing
 
 Your contributions are highly appreciated. Please
-[create a merge request](https://gitlab.com/VictorIndiaTango/autohooks-plugin-mypy/-/merge_requests)
+[create a pull request](https://github.com/greenbone/autohooks-plugin-mypy/pulls)
 on GitHub. Bigger changes need to be discussed with the development team via the
-[issues section at Gitlab](https://gitlab.com/VictorIndiaTango/autohooks-plugin-mypy/-/issues)
+[issues section at GitHub](https://github.com/greenbone/autohooks-plugin-mypy/issues)
 first.
 
 ## License
 
 Copyright (C) 2021 [Vincent Texier](https://gitlab.com/VictorIndiaTango).
+Copyright (C) 2023 [Greenbone AG](https://www.greenbone.net/)
 
 Licensed under the [GNU General Public License v3.0 or later](LICENSE).
