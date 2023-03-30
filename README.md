@@ -1,4 +1,11 @@
+![Greenbone Logo](https://www.greenbone.net/wp-content/uploads/gb_new-logo_horizontal_rgb_small.png)
+
 # autohooks-plugin-mypy
+
+[![GitHub releases](https://img.shields.io/github/release/greenbone/autohooks-plugin-mypy.svg)](https://github.com/greenbone/autohooks-plugin-mypy/releases)
+[![PyPI release](https://img.shields.io/pypi/v/autohooks-plugin-mypy.svg)](https://pypi.org/project/autohooks-plugin-mypy/)
+[![code test coverage](https://codecov.io/gh/greenbone/autohooks-plugin-mypy/branch/main/graph/badge.svg)](https://codecov.io/gh/greenbone/autohooks-plugin-mypy)
+[![Build and test](https://github.com/greenbone/autohooks-plugin-mypy/actions/workflows/ci-python.yml/badge.svg)](https://github.com/greenbone/autohooks-plugin-mypy/actions/workflows/ci-python.yml)
 
 An [autohooks](https://github.com/greenbone/autohooks) plugin for python code
 static typing check via [mypy](https://github.com/python/mypy).
