@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "autohooks-plugin-mypy"
-version = "23.1.0.dev1"
+version = "23.3.0"
 description = "An autohooks plugin for python code static typing check with mypy"
 authors = ["Vincent Texier <vit@free.fr>", "Greenbone Networks GmbH <info@greenbone.net>"]
 license = "GPL-3.0-or-later"
