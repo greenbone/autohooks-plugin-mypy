@@ -16,16 +16,18 @@
 
 import subprocess
 import sys
+from typing import Iterable, List, Optional, Tuple
 
 from autohooks.api import error, ok, out
 from autohooks.api.git import get_staged_status, stash_unstaged_changes
 from autohooks.api.path import match
+from autohooks.config import Config
 
-DEFAULT_INCLUDE = ("*.py",)
-DEFAULT_ARGUMENTS = []
+DEFAULT_INCLUDE: Tuple[str] = ("*.py",)
+DEFAULT_ARGUMENTS: List[str] = []
 
 
-def check_mypy_installed():
+def check_mypy_installed() -> None:
     try:
         import mypy  # pylint: disable=import-outside-toplevel, disable=unused-import
     except ImportError as e:
@@ -34,18 +36,18 @@ def check_mypy_installed():
         ) from e
 
 
-def get_mypy_config(config):
+def get_mypy_config(config: Config) -> Config:
     return config.get("tool").get("autohooks").get("plugins").get("mypy")
 
 
-def ensure_iterable(value):
+def ensure_iterable(value) -> Iterable[str]:
     if isinstance(value, str):
         return [value]
 
     return value
 
 
-def get_include_from_config(config):
+def get_include_from_config(config: Optional[Config]) -> Iterable[str]:
     if not config:
         return DEFAULT_INCLUDE
 
@@ -55,20 +57,22 @@ def get_include_from_config(config):
     return include
 
 
-def get_mypy_arguments(config):
+def get_mypy_arguments(config: Optional[Config]) -> Iterable[str]:
     if not config:
         return DEFAULT_ARGUMENTS
 
     mypy_config = get_mypy_config(config)
-    arguments = ensure_iterable(mypy_config.get_value("arguments", DEFAULT_ARGUMENTS))
+    arguments = ensure_iterable(
+        mypy_config.get_value("arguments", DEFAULT_ARGUMENTS)
+    )
 
     return arguments
 
 
-def precommit(config=None, **kwargs):  # pylint: disable=unused-argument
+def precommit(
+    config: Optional[Config] = None, **kwargs
+) -> int:  # pylint: disable=unused-argument
     check_mypy_installed()
-    bad: str = 1  # pylint: disable=unused-variable
-
     include = get_include_from_config(config)
 
     files = [f for f in get_staged_status() if match(f.path, include)]
