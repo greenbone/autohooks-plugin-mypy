@@ -31,8 +31,8 @@ def check_mypy_installed() -> None:
     try:
         import mypy  # pylint: disable=import-outside-toplevel, disable=unused-import
     except ImportError as e:
-        raise Exception(
-            "Could not find mypy. Please add mypy to your python " "environment"
+        raise RuntimeError(
+            "Could not find mypy. Please add mypy to your python environment"
         ) from e
 
 
@@ -69,9 +69,8 @@ def get_mypy_arguments(config: Optional[Config]) -> Iterable[str]:
     return arguments
 
 
-def precommit(
-    config: Optional[Config] = None, **kwargs
-) -> int:  # pylint: disable=unused-argument
+# pylint: disable=unused-argument
+def precommit(config: Optional[Config] = None, **kwargs) -> int:
     check_mypy_installed()
     include = get_include_from_config(config)
 
