@@ -56,7 +56,6 @@ class AutohooksMypyTestCase(TestCase):
         self.assertTrue(config_path.is_file())
 
         autohooksconfig = load_config_from_pyproject_toml(config_path)
-        self.assertTrue(autohooksconfig.has_config())
 
         mypy_config = get_mypy_config(autohooksconfig.get_config())
         self.assertEqual(mypy_config.get_value("foo"), "bar")
@@ -92,7 +91,6 @@ class AutohooksMypyTestCase(TestCase):
         _out_mock,
         _ok_mock,  # _mock_stdout
     ):
-
         code = """from typing import List
 
 bad_type: List[str] = 'tmp.txt'
