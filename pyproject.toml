@@ -79,3 +79,7 @@ line_length = 80
 
 [tool.pontos.version]
 version-module-file = "autohooks/plugins/mypy/__version__.py"
+
+[tool.mypy]
+files = "autohooks"
+ignore_missing_imports = true
