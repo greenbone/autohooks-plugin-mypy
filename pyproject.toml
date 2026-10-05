@@ -33,11 +33,11 @@ autohooks = ">=21.7.0"
 mypy = ">=0.910"
 
 [tool.poetry.dev-dependencies]
-pontos = ">=26.9.0"
+pontos = ">=26.9.2"
 autohooks-plugin-black = ">=21.7.1"
 autohooks-plugin-pylint = ">=21.6.0"
 autohooks-plugin-isort = ">=22.3.0"
-coverage = ">=7.16.1"
+coverage = ">=7.16.2"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
